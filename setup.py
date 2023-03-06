@@ -13,7 +13,6 @@ setup(
     url='https://github.com/pjq/ms_tts_audio',
     long_description=Path('README.md').read_text(),
     long_description_content_type='text/markdown',
-    packages=['msspeaker'],
     scripts=['ms_tts_audio.py'],
     python_requires='>=3.7',
     classifiers=[
