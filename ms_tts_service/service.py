@@ -2,9 +2,10 @@ import argparse
 import azure.cognitiveservices.speech as speechsdk
 from azure.cognitiveservices.speech.audio import AudioOutputConfig
 
-def ms_tts(text, output_filename, subscription_key, service_region):
+def ms_tts(text, output_filename, subscription_key, service_region, speech_synthesis_voice_name="zh-CN-XiaoxiaoNeural"):
     speech_config = speechsdk.SpeechConfig(subscription=subscription_key, region=service_region)
-    speech_config.speech_synthesis_voice_name = "en-US-AriaNeural"
+    # speech_config.speech_synthesis_voice_name = "en-US-AriaNeural"
+    speech_config.speech_synthesis_voice_name = speech_synthesis_voice_name
 
     audio_config = AudioOutputConfig(filename=f"{output_filename}.mp3")
     speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
