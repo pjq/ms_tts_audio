@@ -1,27 +1,5 @@
 import argparse
-import azure.cognitiveservices.speech as speechsdk
-from azure.cognitiveservices.speech.audio import AudioOutputConfig
-
-
-def ms_tts(text, filename, subscription_key, service_region):
-    speech_config = speechsdk.SpeechConfig(subscription=subscription_key, region=service_region)
-    speech_config.speech_synthesis_voice_name = "en-US-AriaNeural"
-
-    audio_config = AudioOutputConfig(filename=f"{filename}.mp3")
-    speech_synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=audio_config)
-
-    result = speech_synthesizer.speak_text_async(text).get()
-
-    if result.reason == speechsdk.ResultReason.SynthesizingAudioCompleted:
-        print("Speech synthesized to speaker for text [{}]".format(text))
-    elif result.reason == speechsdk.ResultReason.Canceled:
-        cancellation_details = result.cancellation_details
-        print("Speech synthesis canceled: {}".format(cancellation_details.reason))
-        if cancellation_details.reason == speechsdk.CancellationReason.Error:
-            if cancellation_details.error_details:
-                print("Error details: {}".format(cancellation_details.error_details))
-        print("Did you update the subscription info?")
-
+from ms_tts_service import service as text2mp3
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -38,4 +16,4 @@ if __name__ == "__main__":
         with open(filename, "r") as file:
             text = file.read()
 
-    ms_tts(text, options.filename, options.subscription_key, options.service_region)
+    text2mp3.ms_tts(text, options.filename, options.subscription_key, options.service_region)
