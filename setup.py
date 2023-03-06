@@ -14,7 +14,7 @@ setup(
     long_description=Path('README.md').read_text(),
     long_description_content_type='text/markdown',
     packages=['ms_tts_service'],
-    scripts=['service.py'],
+    scripts=['ms_tts_audio.py'],
     python_requires='>=3.7',
     classifiers=[
         "Programming Language :: Python :: 3",
