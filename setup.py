@@ -6,7 +6,7 @@ from setuptools import setup
 setup(
     name='ms_tts_service',
     description='Convert text to mp3 via Microsoft tts',
-    version=1.1,
+    version=1.2,
     license='MIT',
     author='Jianqing Peng',
     author_email='pengjianqing@gmail.com',
