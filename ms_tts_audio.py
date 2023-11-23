@@ -16,4 +16,6 @@ if __name__ == "__main__":
         with open(filename, "r") as file:
             text = file.read()
 
-    text2mp3.ms_tts(text, options.filename, options.subscription_key, options.service_region)
+    # text2mp3.ms_tts(text, options.filename, options.subscription_key, options.service_region, "zh-CN-XiaoxiaoNeural")
+    # text2mp3.ms_tts(text, options.filename, options.subscription_key, options.service_region, "zh-CN-liaoning-XiaobeiNeural")
+    text2mp3.ms_tts(text, options.filename, options.subscription_key, options.service_region, "zh-CN-YunyangNeural")
