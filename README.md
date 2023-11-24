@@ -8,34 +8,44 @@ This script allows you to convert text to speech(mp3) using Microsoft Azure Cogn
 ```shell
 pip install -r requirements.txt
 ```
+Sure, here is the updated `README.md`:
+
 ## Usage
 ```shell
-usage: main.py [-h] --subscription_key SUBSCRIPTION_KEY --service_region SERVICE_REGION [--text TEXT] [--filename FILENAME]
+usage: main.py [-h] --subscription_key SUBSCRIPTION_KEY --service_region SERVICE_REGION [--text TEXT] [--input INPUT] [--output OUTPUT] [--voice_name VOICE_NAME]
 optional arguments:
   -h, --help            show this help message and exit
   --text TEXT           text to synthesize
-  --filename FILENAME   output audio file name
-  --subscription_key SUBSCRIPTION_KEY
+  --input INPUT         input file to read text from
+  --output OUTPUT       output audio file name
+  --subscription_key    SUBSCRIPTION_KEY
                         subscription key
   --service_region SERVICE_REGION
                         service region
+  --voice_name VOICE_NAME
+                        voice name for tts engine
 ```
 ## Example
 ```shell
-python ms_tts_audio.py --subscription_key "xxxxxxxxxxxxxxxxxxxxxxxxx" --service_region "eastasia" --text "hello world"
+python ms_tts_audio.py --subscription_key "$MS_TTS_SUBSCRIPTION_KEY" --service_region "eastasia" --text "hello world"
 ```
 
 ```shell
-python ms_tts_audio.py  --subscription_key "xxxxxxxxxxxxxxxxxxxxxxxx" --service_region "eastasia" --file input.txt
+python ms_tts_audio.py --subscription_key "$MS_TTS_SUBSCRIPTION_KEY" --service_region "eastasia" --input input.txt
 ```
 This will create an audio file named output.mp3 with the speech synthesis of the text hello world.
 
-save to the file
+To save the synthesized speech to a specified file:
 ```shell
- python ms_tts_audio.py --subscription_key "$MS_TTS_SUBSCRIPTION_KEY" --service_region "eastasia" --text "You can call my name as Jianqing Peng" --filenam
-e "jianqing" 
+ python ms_tts_audio.py --subscription_key "$MS_TTS_SUBSCRIPTION_KEY" --service_region "eastasia" --text "You can call my name as Jianqing Peng" --output "jianqing" 
 ```
-Then it will save the audio the jianqing.mp3
+Then it will save the audio to the file jianqing.mp3
+
+Or you can specify the voice name:
+```shell
+ python ms_tts_audio.py --subscription_key "$MS_TTS_SUBSCRIPTION_KEY" --service_region "eastasia" --input "input.txt" --output "jianqing" --voice_name "zh-CN-YunyangNeural"
+```
+Please replace the `"$MS_TTS_SUBSCRIPTION_KEY"` with your own subscription key and `"eastasia"` with your own service region as per your configuration. Update the `input.txt`, `--output`, and `--voice_name` as necessary.
 
 
 ## Supported voice
